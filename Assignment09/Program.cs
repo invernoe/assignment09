@@ -186,6 +186,58 @@ namespace Assignment08
                 System.Console.WriteLine(item);
             }
             #endregion
+
+            #region Part03
+            #region Question1
+            IShape[] shapes =
+            {
+                new Circle()
+                {
+                    Radius = 1,
+                    Area = 3.14
+                },
+                new Rectangle()
+                {
+                    Width = 1,
+                    Height = 1,
+                    Area = 1
+                }
+            };
+
+            foreach (var item in shapes)
+            {
+                item.DisplayShapeInfo();
+            }
+            #endregion
+
+            #region Question2
+            IAuthenticationService authService = new BasicAuthenticationService();
+
+            string username = "Mahmoud";
+            int password = 123;
+
+            bool isAuthenticated = authService.AuthenticateUser(username, password);
+            Console.WriteLine($"isAuthenticaled = {isAuthenticated}");
+
+            string role = "Admin";
+            bool isAuthorized = authService.AuthorizeUser(username, role);
+            Console.WriteLine($"isAuthorized = {isAuthorized}"); 
+            #endregion
+
+            #region Question3
+            INotificationService[] notifs = 
+            {
+                new EmailNotificationService() { Recipient = "Mahmoud", Message = "Hello Mahmoud!"},
+                new SmsNotificationService() { Recipient = "Mahmoud", Message = "Hello Mahmoud!"},
+                new PushNotificationService() { Recipient = "Mahmoud", Message = "Hello Mahmoud!"}
+            };
+
+            foreach (var item in notifs)
+            {
+                item.SendNotification();
+            }
+            #endregion
+            #endregion
         }
     }
 }
